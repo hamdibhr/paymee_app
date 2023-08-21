@@ -1,0 +1,113 @@
+.qrcode {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.qrcode h2 {
+  color: #213a7d;
+}
+
+.note {
+  margin-top: 20px;
+}
+
+.note label {
+  display: block;
+  margin-bottom: 5px;
+  color: #8b8b8b;
+  font-weight: 700;
+}
+
+.note input {
+  width: 289px;
+  height: 44px;
+  top: 255px;
+  left: 24px;
+  padding: 6px 16px 6px 16px;
+  border-radius: 4px;
+  gap: 8px;
+  border-radius: 7px;
+  border: 1px solid #ccc;
+}
+
+.amount input {
+  width: 289px;
+  height: 44px;
+  top: 187px;
+  left: 24px;
+  padding: 13.5px 12px 13.5px 12px;
+  border-radius: 5px;
+  border: 1px;
+  gap: 10px;
+  border-radius: 7px;
+  border: 1px solid #ccc;
+  padding-left: 15px;
+}
+
+.amount {
+  margin-top: 20px;
+}
+
+.amount label {
+  display: block;
+  margin-bottom: 5px;
+  color: #8b8b8b;
+  font-weight: 700;
+}
+
+.input-group-text {
+  display: flex;
+  align-items: center;
+  padding: 0.2rem 0.9rem;
+  margin-bottom: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #495057;
+  text-align: center;
+  white-space: inherit;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 0rem;
+  border-left: solid 1px gray;
+}
+.input-group-text {
+  position: absolute;
+  top: 50%;
+  left: 74.6%;
+  transform: translateY(-50%);
+  color: gray;
+}
+
+.create {
+  margin-top: 20px;
+}
+
+.create button {
+  width: 289px;
+  height: 44px;
+  top: 255px;
+  left: 24px;
+  padding: 6px 16px 6px 16px;
+  border-radius: 4px;
+  gap: 8px;
+  background-color: #034da3;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+}
+.ferme button {
+  margin-top: 8px;
+  width: 289px;
+  height: 44px;
+  top: 307px;
+  left: 24px;
+  padding: 6px 16px 6px 16px;
+  border-radius: 4px;
+  border: 1px;
+  gap: 4px;
+  background-color: #ffffff;
+  color: #8b8b8b;
+  border: 1px solid #ccc;
+}
