@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect, startTransition } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import QRCode from "qrcode.react";
 import Select from "react-select";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -298,11 +298,21 @@ function Modification() {
     const options = { year: "2-digit", month: "2-digit", day: "2-digit" };
     return new Date(dateString).toLocaleDateString("en-US", options);
   };
+  const navigate = useNavigate();
   return (
     <form>
       <div className="row">
         <div className="col-9">
-          <h3 style={{ marginLeft: "30px" }}>Caisse 1</h3>
+          <h3
+            style={{ marginLeft: "30px" }}
+            onClick={() => {
+              startTransition(() => {
+                navigate("/");
+              });
+            }}
+          >
+            <span style={{ cursor: "pointer" }}>Caisse 1</span>
+          </h3>
         </div>
         <div className="col-3 d-flex justify-content-end">
           <img src={Download} alt="Download" />
