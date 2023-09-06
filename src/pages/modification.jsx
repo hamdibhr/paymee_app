@@ -23,169 +23,6 @@ import Print from "../assets/images/print.png";
 import imagev from "../assets/images/edit.png";
 import "./modification.css";
 function Modification() {
-  const [randomValue, setRandomValue] = useState("");
-
-  useEffect(() => {
-    generateRandomValue();
-  }, []);
-
-  const generateRandomValue = () => {
-    const random = Math.random().toString(36).substring(7);
-    setRandomValue(random);
-  };
-  const options = [
-    { value: "Succeded", label: "Succeded" },
-    { value: "Failed", label: "Failed" },
-  ];
-  const customStyles = {
-    control: (provided, state) => ({
-      ...provided,
-      background: "#fff",
-      borderColor: "#C2C7CF",
-      minHeight: "30px",
-      height: "30px",
-      boxShadow: state.isFocused ? null : null,
-      marginTop: 3,
-    }),
-
-    valueContainer: (provided, state) => ({
-      ...provided,
-      height: "30px",
-      padding: "0 6px",
-    }),
-
-    input: (provided, state) => ({
-      ...provided,
-      margin: "0px",
-    }),
-    indicatorSeparator: (state) => ({
-      display: "none",
-    }),
-    indicatorsContainer: (provided, state) => ({
-      ...provided,
-      height: "30px",
-    }),
-  };
-  const { cardId } = useParams();
-  const [tableData, setTableData] = useState([]);
-  const [file, setFile] = useState("");
-  const [modal, setModal] = useState(false);
-
-  const toggle = () => setModal(!modal);
-
-  const [fileName, setFileName] = useState("No selected file");
-  const handleCreate = () => {
-    toggle();
-  };
-
-  const handleFileChange = ({ target: { files } }) => {
-    if (files[0]) {
-      const fullName = files[0].name;
-      const fileExtension = fullName.split(".").pop();
-      const fileNameWithoutExtension = fullName.substring(
-        0,
-        fullName.lastIndexOf(".")
-      );
-
-      if (fileNameWithoutExtension.length > 10) {
-        const shortFileName = fileNameWithoutExtension.substring(0, 5);
-        setFileName(`${shortFileName}...${fileExtension}`);
-      } else {
-        setFileName(fullName);
-      }
-    } else {
-      setFileName("No selected file");
-    }
-  };
-  const handleFileClear = () => {
-    setFileName("No selected file");
-    const fileInput = document.querySelector(".input-file");
-    if (fileInput) {
-      fileInput.value = null;
-    }
-  };
-  const handleFermerButtonClick = () => {
-    setFile("");
-    toggle();
-  };
-  const updateMassegeStyle = {
-    color: "#034DA3",
-    marginLeft: "55px",
-    display: "block",
-    fontSize: "15px",
-  };
-  const updateMassegeStyl = {
-    color: "#5469D4",
-    marginLeft: "55px",
-    display: "block",
-    fontSize: "14px",
-  };
-  const uploadMessageStyle = {
-    color: "#034DA3",
-    textAlign: "center",
-    marginTop: "70px",
-  };
-  const uploadMessageStyl = {
-    color: "#034DA3",
-    textAlign: "center",
-  };
-  const montant = {
-    fontWeight: "500",
-    fontSize: "14px",
-    lineHeight: "16,94px",
-    font: "Inter",
-  };
-  const buttCheck = {
-    width: "14px",
-    height: "14px",
-    border: "none",
-    borderRadius: "4px",
-    boxShadow:
-      "0px 1px 1px 0px #0000001F, 0px 0px 0px 1px #3C425729, 0px 2px 5px 0px #3C425714",
-  };
-  const headr = {
-    font: "Inter",
-    fontWeight: "600",
-    fontSize: "14px",
-    lineHeight: "16,94px",
-  };
-
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
-
-  const [date1, setDate1] = useState("");
-  const [date2, setDate2] = useState("");
-  const [selectedStatus, setSelectedStatus] = useState(null);
-
-  const handleDate1Change = (event) => {
-    setDate1(event.target.value);
-  };
-
-  const handleDate2Change = (event) => {
-    setDate2(event.target.value);
-  };
-
-  const handleStatusChange = (selectedOption) => {
-    setSelectedStatus(selectedOption);
-  };
-
-  // Filter the tableData based on the search query, date1, date2, and status
-  const filteredRows = tableData.filter((row) => {
-    const isDateInRange =
-      (!date1 || row.date >= date1) && (!date2 || row.date <= date2);
-
-    const isStatusMatch =
-      !selectedStatus || row.statut === selectedStatus.value;
-
-    return (
-      row.Number.toString().toLowerCase().includes(searchQuery.toLowerCase()) &&
-      isDateInRange &&
-      isStatusMatch
-    );
-  });
   const rowCount = tableData.length;
   const getStatutStyle = (status) => {
     if (status === "Failed") {
@@ -258,6 +95,171 @@ function Modification() {
     lineHeight: "16.94px",
     color: "#3C4257",
   };
+  const updateMassegeStyle = {
+    color: "#034DA3",
+    marginLeft: "55px",
+    display: "block",
+    fontSize: "15px",
+  };
+  const updateMassegeStyl = {
+    color: "#5469D4",
+    marginLeft: "55px",
+    display: "block",
+    fontSize: "14px",
+  };
+  const uploadMessageStyle = {
+    color: "#034DA3",
+    textAlign: "center",
+    marginTop: "70px",
+  };
+  const uploadMessageStyl = {
+    color: "#034DA3",
+    textAlign: "center",
+  };
+  const montant = {
+    fontWeight: "500",
+    fontSize: "14px",
+    lineHeight: "16,94px",
+    font: "Inter",
+  };
+  const buttCheck = {
+    width: "14px",
+    height: "14px",
+    border: "none",
+    borderRadius: "4px",
+    boxShadow:
+      "0px 1px 1px 0px #0000001F, 0px 0px 0px 1px #3C425729, 0px 2px 5px 0px #3C425714",
+  };
+  const headr = {
+    font: "Inter",
+    fontWeight: "600",
+    fontSize: "14px",
+    lineHeight: "16,94px",
+  };
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      background: "#fff",
+      borderColor: "#C2C7CF",
+      minHeight: "30px",
+      height: "30px",
+      boxShadow: state.isFocused ? null : null,
+      marginTop: 3,
+    }),
+
+    valueContainer: (provided, state) => ({
+      ...provided,
+      height: "30px",
+      padding: "0 6px",
+    }),
+
+    input: (provided, state) => ({
+      ...provided,
+      margin: "0px",
+    }),
+    indicatorSeparator: (state) => ({
+      display: "none",
+    }),
+    indicatorsContainer: (provided, state) => ({
+      ...provided,
+      height: "30px",
+    }),
+  };
+  const [randomValue, setRandomValue] = useState("");
+
+  useEffect(() => {
+    generateRandomValue();
+  }, []);
+
+  const generateRandomValue = () => {
+    const random = Math.random().toString(36).substring(7);
+    setRandomValue(random);
+  };
+  const options = [
+    { value: "Succeded", label: "Succeded" },
+    { value: "Failed", label: "Failed" },
+  ];
+
+  const { cardId } = useParams();
+  const [tableData, setTableData] = useState([]);
+  const [file, setFile] = useState("");
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => setModal(!modal);
+
+  const [fileName, setFileName] = useState("No selected file");
+  const handleCreate = () => {
+    toggle();
+  };
+
+  const handleFileChange = ({ target: { files } }) => {
+    if (files[0]) {
+      const fullName = files[0].name;
+      const fileExtension = fullName.split(".").pop();
+      const fileNameWithoutExtension = fullName.substring(
+        0,
+        fullName.lastIndexOf(".")
+      );
+
+      if (fileNameWithoutExtension.length > 10) {
+        const shortFileName = fileNameWithoutExtension.substring(0, 5);
+        setFileName(`${shortFileName}...${fileExtension}`);
+      } else {
+        setFileName(fullName);
+      }
+    } else {
+      setFileName("No selected file");
+    }
+  };
+  const handleFileClear = () => {
+    setFileName("No selected file");
+    const fileInput = document.querySelector(".input-file");
+    if (fileInput) {
+      fileInput.value = null;
+    }
+  };
+  const handleFermerButtonClick = () => {
+    setFile("");
+    toggle();
+  };
+
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const [date1, setDate1] = useState("");
+  const [date2, setDate2] = useState("");
+  const [selectedStatus, setSelectedStatus] = useState(null);
+
+  const handleDate1Change = (event) => {
+    setDate1(event.target.value);
+  };
+
+  const handleDate2Change = (event) => {
+    setDate2(event.target.value);
+  };
+
+  const handleStatusChange = (selectedOption) => {
+    setSelectedStatus(selectedOption);
+  };
+
+  // Filter the tableData based on the search query, date1, date2, and status
+  const filteredRows = tableData.filter((row) => {
+    const isDateInRange =
+      (!date1 || row.date >= date1) && (!date2 || row.date <= date2);
+
+    const isStatusMatch =
+      !selectedStatus || row.statut === selectedStatus.value;
+
+    return (
+      row.Number.toString().toLowerCase().includes(searchQuery.toLowerCase()) &&
+      isDateInRange &&
+      isStatusMatch
+    );
+  });
+
   const rowsPerPage = 5;
   const [currentPage, setCurrentPage] = useState(1);
   const startIndex = (currentPage - 1) * rowsPerPage;

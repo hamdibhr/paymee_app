@@ -66,11 +66,6 @@ function Paymeeqr() {
       height: "30px",
     }),
   };
-  const handleFermerButtonClick = () => {
-    setNote("");
-    setAmount("");
-    toggle();
-  };
   const buttonA = {
     fontWeight: "500",
     fontSize: "14px",
@@ -123,6 +118,12 @@ function Paymeeqr() {
     lineHeight: "16.94px",
     color: "#3C4257",
   };
+  const handleFermerButtonClick = () => {
+    setNote("");
+    setAmount("");
+    toggle();
+  };
+
   const rowCount = qrCodes.length;
   const rowsPerPage = 8;
   const [currentPage, setCurrentPage] = useState(1);
